@@ -10,13 +10,15 @@ package Entities;
  * @author Smurf
  */
 public class Customer {
-    private String[] name;
-    private int[] age;
-    private String[] email;
-    private String[] address;
-    private LotDesc[] lot;
-    private Payment[] payment;
+    String[] name;
+    int[] age;
+    String[] email;
+    String[] address;
+    LotDesc[] lot;
+    Payment[] payment;
 
+    // create a constructor to initialize the variables
+    
     public String[] getName() {
         return name;
     }
