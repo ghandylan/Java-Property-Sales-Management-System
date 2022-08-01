@@ -6,6 +6,8 @@ package Forms;
 // import Images package
 //import Images.*;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Smurf
@@ -15,17 +17,19 @@ public class Register extends javax.swing.JFrame {
     /**
      * Creates new form LotSpecs
      */
-    public Register() {
-        initComponents();
-        this.setLocationRelativeTo(null);
-    }
-
     int price1 = 3200000;
     int price2 = 12500000;
     int price3 = 25000000;
 
     int currentPrice;
-    String reservationDayCount = ReservationDayCountSpinner.getValue();
+    String reservationDayCount;
+
+    int dayCount;
+
+    public Register() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -61,21 +65,21 @@ public class Register extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        FirstNameField = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        LastNameField = new javax.swing.JTextField();
+        RegisterButton = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        EmailField = new javax.swing.JTextField();
+        ContactField = new javax.swing.JTextField();
         YesReservationChoice = new javax.swing.JRadioButton();
         NoReservationChoice = new javax.swing.JRadioButton();
         jLabel14 = new javax.swing.JLabel();
         DurationLabel = new javax.swing.JLabel();
-        ReservationDayCountSpinner = new javax.swing.JSpinner();
         jLabel16 = new javax.swing.JLabel();
         TotalPrice = new javax.swing.JLabel();
+        ResDayCount = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -159,8 +163,13 @@ public class Register extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setText("Last name");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("Register");
+        RegisterButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        RegisterButton.setText("Register");
+        RegisterButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RegisterButtonMouseClicked(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setText("Email");
@@ -168,9 +177,9 @@ public class Register extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setText("Contact no.");
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        ContactField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                ContactFieldActionPerformed(evt);
             }
         });
 
@@ -199,6 +208,12 @@ public class Register extends javax.swing.JFrame {
         jLabel16.setText("Days");
 
         TotalPrice.setText("--");
+
+        ResDayCount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResDayCountActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -241,8 +256,8 @@ public class Register extends javax.swing.JFrame {
                                     .addComponent(jLabel10))
                                 .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(LastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(FirstNameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(67, 67, 67)
@@ -253,8 +268,8 @@ public class Register extends javax.swing.JFrame {
                                         .addComponent(jLabel13)
                                         .addGap(18, 18, 18)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                    .addComponent(jTextField3))))
+                                    .addComponent(ContactField, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                    .addComponent(EmailField))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -276,19 +291,20 @@ public class Register extends javax.swing.JFrame {
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(68, 68, 68)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(DurationLabel)
+                                        .addGap(98, 98, 98))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(YesReservationChoice)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(NoReservationChoice)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(DurationLabel)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(ReservationDayCountSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(28, 28, 28)
+                                        .addComponent(NoReservationChoice)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(ResDayCount, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel16)))
-                                .addGap(41, 41, 41)
+                                        .addComponent(jLabel16)
+                                        .addGap(59, 59, 59)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TotalPrice)
                                     .addComponent(jLabel14))
@@ -296,37 +312,37 @@ public class Register extends javax.swing.JFrame {
                         .addContainerGap(24, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(47, 47, 47)
                 .addComponent(jLabel9)
-                .addGap(5, 5, 5)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FirstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel11)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(LastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel13)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ContactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(2, 2, 2)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
@@ -346,27 +362,26 @@ public class Register extends javax.swing.JFrame {
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PriceLabel)
-                .addGap(55, 55, 55)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel14)
-                    .addComponent(DurationLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(DurationLabel)
+                    .addComponent(jLabel14))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(NoReservationChoice)
+                    .addComponent(YesReservationChoice)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(YesReservationChoice)
-                        .addComponent(NoReservationChoice)
-                        .addComponent(ReservationDayCountSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel16)
-                        .addComponent(TotalPrice)))
-                .addGap(17, 17, 17)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TotalPrice)
+                    .addComponent(ResDayCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(RegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -381,12 +396,15 @@ public class Register extends javax.swing.JFrame {
         PriceLabel.setText("");
         PriceLabel.setText(String.valueOf("Php" + price1));
         currentPrice = price1;
+        TotalPrice.setText(String.valueOf("Php" + currentPrice));
+
     }//GEN-LAST:event_LowEndHouseButtonMouseClicked
 
     private void MidEndHouseButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MidEndHouseButtonMouseClicked
         PriceLabel.setText("");
         PriceLabel.setText(String.valueOf("Php" + price2));
         currentPrice = price2;
+        TotalPrice.setText(String.valueOf("Php" + currentPrice));
 
     }//GEN-LAST:event_MidEndHouseButtonMouseClicked
 
@@ -394,22 +412,35 @@ public class Register extends javax.swing.JFrame {
         PriceLabel.setText("");
         PriceLabel.setText(String.valueOf("Php" + price3));
         currentPrice = price3;
+        TotalPrice.setText(String.valueOf("Php" + currentPrice));
 
     }//GEN-LAST:event_HiEndHouseButtonMouseClicked
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void ContactFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContactFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_ContactFieldActionPerformed
 
     private void YesReservationChoiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YesReservationChoiceMouseClicked
         DurationLabel.setVisible(true);
-        ReservationDayCountSpinner.setEnabled(true);
+        ResDayCount.setEnabled(true);
     }//GEN-LAST:event_YesReservationChoiceMouseClicked
 
     private void NoReservationChoiceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NoReservationChoiceMouseClicked
         DurationLabel.setVisible(false);
-        ReservationDayCountSpinner.setEnabled(false);
+        ResDayCount.setEnabled(false);
     }//GEN-LAST:event_NoReservationChoiceMouseClicked
+
+    private void RegisterButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegisterButtonMouseClicked
+        if (FirstNameField.getText().isEmpty() || LastNameField.getText().isEmpty() || EmailField.getText().isEmpty() || ContactField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter the missing data!");
+        } else {
+
+        }
+    }//GEN-LAST:event_RegisterButtonMouseClicked
+
+    private void ResDayCountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResDayCountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ResDayCountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -450,19 +481,23 @@ public class Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ContactField;
     private javax.swing.JLabel DurationLabel;
+    private javax.swing.JTextField EmailField;
+    private javax.swing.JTextField FirstNameField;
     private javax.swing.JRadioButton HiEndHouseButton;
+    private javax.swing.JTextField LastNameField;
     private javax.swing.ButtonGroup LocationSelection;
     private javax.swing.JRadioButton LowEndHouseButton;
     private javax.swing.JRadioButton MidEndHouseButton;
     private javax.swing.ButtonGroup ModelSelection;
     private javax.swing.JRadioButton NoReservationChoice;
     private javax.swing.JLabel PriceLabel;
-    private javax.swing.JSpinner ReservationDayCountSpinner;
+    private javax.swing.JButton RegisterButton;
+    private javax.swing.JTextField ResDayCount;
     private javax.swing.ButtonGroup ResevationChoice;
     private javax.swing.JLabel TotalPrice;
     private javax.swing.JRadioButton YesReservationChoice;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -491,9 +526,5 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
