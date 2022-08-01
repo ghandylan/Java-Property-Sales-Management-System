@@ -10,60 +10,52 @@ package Entities;
  * @author Smurf
  */
 public class Customer {
-    String[] name;
-    int[] age;
-    String[] email;
-    String[] address;
-    LotDesc[] lot;
-    Payment[] payment;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String contactNo;
+    LotSpecs lotspecs;
+    Payment payment;
 
-    // create a constructor to initialize the variables
+
+    public Customer(String firstName, String lastName, String email, String contactNo) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.contactNo = contactNo;
+    }
     
-    public String[] getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String[] name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public int[] getAge() {
-        return age;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setAge(int[] age) {
-        this.age = age;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String[] getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String[] email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String[] getAddress() {
-        return address;
+    public String getContactNo() {
+        return contactNo;
     }
 
-    public void setAddress(String[] address) {
-        this.address = address;
+    public void setContactNo(String contactNo) {
+        this.contactNo = contactNo;
     }
 
-    public LotDesc[] getLot() {
-        return lot;
-    }
 
-    public void setLot(LotDesc[] lot) {
-        this.lot = lot;
-    }
-
-    public Payment[] getPayment() {
-        return payment;
-    }
-
-    public void setPayment(Payment[] payment) {
-        this.payment = payment;
-    }
 }

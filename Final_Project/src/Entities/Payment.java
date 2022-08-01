@@ -9,7 +9,33 @@ package Entities;
  * @author Smurf
  */
 public class Payment {
+
     private String modeOfPayment;
-    private int amount;
-    
+    private boolean reservation;
+    private int totalPrice;
+
+    public String getModeOfPayment() {
+        return modeOfPayment;
+    }
+
+    public void setModeOfPayment(String modeOfPayment) {
+        this.modeOfPayment = modeOfPayment;
+    }
+
+    public boolean isReservation() {
+        return reservation;
+    }
+
+    public void setReservation(boolean reservation) {
+        this.reservation = reservation;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
 }

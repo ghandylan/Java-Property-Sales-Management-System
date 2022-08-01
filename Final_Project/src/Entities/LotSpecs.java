@@ -8,12 +8,18 @@ package Entities;
  *
  * @author Smurf
  */
-public class LotDesc {
-
+public class LotSpecs {
+    private int lotSize;
     private String location;
-    private int size; // in sq. meters
-    private int price;
+    private String model;
 
+    public int getLotSize() {
+        return lotSize;
+    }
+
+    public void setLotSize(int lotSize) {
+        this.lotSize = lotSize;
+    }
 
     public String getLocation() {
         return location;
@@ -23,20 +29,12 @@ public class LotDesc {
         this.location = location;
     }
 
-    public int getSize() {
-        return size;
+    public String getModel() {
+        return model;
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
+    public void setModel(String model) {
+        this.model = model;
     }
 
 

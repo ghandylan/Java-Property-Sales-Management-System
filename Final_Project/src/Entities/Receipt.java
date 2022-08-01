@@ -10,7 +10,7 @@ package Entities;
  */
 public class Receipt {
     private Customer userInformation;
-    private LotDesc specs;
+    private LotSpecs specs;
 
     public Customer getUserInformation() {
         return userInformation;
@@ -20,11 +20,11 @@ public class Receipt {
         this.userInformation = userInformation;
     }
 
-    public LotDesc getSpecs() {
+    public LotSpecs getSpecs() {
         return specs;
     }
 
-    public void setSpecs(LotDesc specs) {
+    public void setSpecs(LotSpecs specs) {
         this.specs = specs;
     }
 }
