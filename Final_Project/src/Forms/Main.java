@@ -39,11 +39,13 @@ public class Main extends javax.swing.JFrame {
         LoginAddressField = new javax.swing.JTextField();
         LoginNameField = new javax.swing.JTextField();
         LoginEmailField = new javax.swing.JTextField();
-        LeftPaneColor = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         LoginTitleLabel = new javax.swing.JLabel();
         LoginSubmitButton = new javax.swing.JButton();
-        FieldsAreEmptyLabel = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -61,30 +63,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        LeftPaneColor.setBackground(new java.awt.Color(0, 102, 102));
-
-        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Real Estate Sales and Management System");
-
-        javax.swing.GroupLayout LeftPaneColorLayout = new javax.swing.GroupLayout(LeftPaneColor);
-        LeftPaneColor.setLayout(LeftPaneColorLayout);
-        LeftPaneColorLayout.setHorizontalGroup(
-            LeftPaneColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LeftPaneColorLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(20, 20, 20))
-        );
-        LeftPaneColorLayout.setVerticalGroup(
-            LeftPaneColorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LeftPaneColorLayout.createSequentialGroup()
-                .addGap(161, 161, 161)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         LoginTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         LoginTitleLabel.setText("Sign-in Form");
 
@@ -96,53 +74,65 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        FieldsAreEmptyLabel.setForeground(new java.awt.Color(255, 51, 51));
-        FieldsAreEmptyLabel.setText(".");
-        FieldsAreEmptyLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Register");
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Property");
+        jMenuBar1.add(jMenu4);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(LeftPaneColor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(279, 279, 279)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(LoginAddressLabel)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(LoginNameLabel)
-                        .addComponent(LoginEmailLabel)
-                        .addComponent(LoginEmailField, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                        .addComponent(LoginAddressField)
-                        .addComponent(LoginTitleLabel)
-                        .addComponent(LoginNameField))
-                    .addComponent(LoginSubmitButton)
-                    .addComponent(FieldsAreEmptyLabel))
-                .addGap(68, 68, 68))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(LoginNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LoginAddressLabel)
+                            .addComponent(LoginEmailLabel)
+                            .addComponent(LoginTitleLabel)
+                            .addComponent(LoginSubmitButton))
+                        .addGap(129, 129, 129))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LoginAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LoginEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
-                .addComponent(LoginTitleLabel)
-                .addGap(32, 32, 32)
+                .addContainerGap(228, Short.MAX_VALUE)
                 .addComponent(LoginNameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LoginNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(LoginEmailLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LoginTitleLabel)
+                    .addComponent(LoginNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71)
                 .addComponent(LoginEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(14, 14, 14)
+                .addComponent(LoginEmailLabel)
+                .addGap(65, 65, 65)
                 .addComponent(LoginAddressLabel)
-                .addGap(18, 18, 18)
+                .addGap(16, 16, 16)
                 .addComponent(LoginAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(LoginSubmitButton)
-                .addGap(69, 69, 69)
-                .addComponent(FieldsAreEmptyLabel)
-                .addGap(50, 50, 50))
-            .addComponent(LeftPaneColor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(135, 135, 135))
         );
 
         pack();
@@ -155,8 +145,8 @@ public class Main extends javax.swing.JFrame {
             
             this.setVisible(false);
             // show LotSpecs 
-            LotSpecs lotSpecs = new LotSpecs();
-            lotSpecs.setVisible(true);
+            
+    
             
         }
     }//GEN-LAST:event_LoginSubmitButtonActionPerformed
@@ -205,8 +195,6 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel FieldsAreEmptyLabel;
-    private javax.swing.JPanel LeftPaneColor;
     private javax.swing.JTextField LoginAddressField;
     private javax.swing.JLabel LoginAddressLabel;
     private javax.swing.JTextField LoginEmailField;
@@ -215,6 +203,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel LoginNameLabel;
     private javax.swing.JButton LoginSubmitButton;
     private javax.swing.JLabel LoginTitleLabel;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
