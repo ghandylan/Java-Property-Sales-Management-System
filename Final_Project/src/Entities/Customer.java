@@ -16,13 +16,16 @@ public class Customer {
     private String contactNo;
     LotSpecs lotspecs;
     Payment payment;
+    boolean status;
 
-
-    public Customer(String firstName, String lastName, String email, String contactNo) {
+    // create a constructor for Customer
+    public Customer(String firstName, String lastName, String email, String contactNo, LotSpecs lotspecs, Payment payment) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.contactNo = contactNo;
+        this.lotspecs = lotspecs;
+        this.payment = payment;
     }
     
     public String getFirstName() {
@@ -56,6 +59,20 @@ public class Customer {
     public void setContactNo(String contactNo) {
         this.contactNo = contactNo;
     }
+
+    public LotSpecs getLotspecs() {
+        return lotspecs;
+    }
+
+    public void setLotspecs(LotSpecs lotspecs) {
+        this.lotspecs = lotspecs;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    
 
 
 }

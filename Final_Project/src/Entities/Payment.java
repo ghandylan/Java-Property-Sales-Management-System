@@ -14,6 +14,13 @@ public class Payment {
     private boolean reservation;
     private int totalPrice;
 
+    // create a constructor for Payment
+    public Payment(String modeOfPayment) {
+        this.modeOfPayment = modeOfPayment;
+        this.reservation = reservation;
+        this.totalPrice = totalPrice;
+    }
+
     public String getModeOfPayment() {
         return modeOfPayment;
     }
@@ -37,5 +44,7 @@ public class Payment {
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }
+
+    
 
 }

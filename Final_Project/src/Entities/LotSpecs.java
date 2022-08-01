@@ -9,15 +9,22 @@ package Entities;
  * @author Smurf
  */
 public class LotSpecs {
-    private int lotSize;
+    private String lotSize;
     private String location;
     private String model;
 
-    public int getLotSize() {
+    // create a constructor for LotSpecs
+    public LotSpecs(String lotSize, String location, String model) {
+        this.lotSize = lotSize;
+        this.location = location;
+        this.model = model;
+    }
+    
+    public String getLotSize() {
         return lotSize;
     }
 
-    public void setLotSize(int lotSize) {
+    public void setLotSize(String lotSize) {
         this.lotSize = lotSize;
     }
 
