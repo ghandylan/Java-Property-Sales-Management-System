@@ -17,8 +17,7 @@ public class Payment {
     // create a constructor for Payment
     public Payment(String modeOfPayment) {
         this.modeOfPayment = modeOfPayment;
-        this.reservation = reservation;
-        this.totalPrice = totalPrice;
+
     }
 
     public String getModeOfPayment() {
@@ -44,7 +43,4 @@ public class Payment {
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
     }
-
-    
-
 }

@@ -8,6 +8,6 @@ package Entities;
  *
  * @author Smurf
  */
-public class Cash extends Payment {
+public class Date {
     
 }

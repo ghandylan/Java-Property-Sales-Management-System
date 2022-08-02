@@ -13,13 +13,13 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String email;
-    private String contactNo;
+    private int contactNo;
     LotSpecs lotspecs;
     Payment payment;
     private String status;
 
     // create a constructor for Customer
-    public Customer(String firstName, String lastName, String email, String contactNo, LotSpecs lotspecs, Payment payment) {
+    public Customer(String firstName, String lastName, String email, int contactNo, LotSpecs lotspecs, Payment payment) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -53,11 +53,11 @@ public class Customer {
         this.email = email;
     }
 
-    public String getContactNo() {
+    public int getContactNo() {
         return contactNo;
     }
 
-    public void setContactNo(String contactNo) {
+    public void setContactNo(int contactNo) {
         this.contactNo = contactNo;
     }
 

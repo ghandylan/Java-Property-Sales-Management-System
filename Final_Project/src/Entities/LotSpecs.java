@@ -9,17 +9,18 @@ package Entities;
  * @author Smurf
  */
 public class LotSpecs {
-    private String lotSize;
+
     private String location;
-    private String model;
+    private String lotSize;
+    private String price;
 
     // create a constructor for LotSpecs
-    public LotSpecs(String lotSize, String location, String model) {
-        this.lotSize = lotSize;
+    public LotSpecs(String location, String lotSize,  String price) {
         this.location = location;
-        this.model = model;
+        this.lotSize = lotSize;
+        this.price = price;
     }
-    
+
     public String getLotSize() {
         return lotSize;
     }
@@ -36,14 +37,12 @@ public class LotSpecs {
         this.location = location;
     }
 
-    public String getModel() {
-        return model;
+    public String getPrice() {
+        return price;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setPrice(String price) {
+        this.price = price;
     }
-
-
 
 }
