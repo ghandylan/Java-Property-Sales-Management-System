@@ -16,7 +16,7 @@ public class Customer {
     private String contactNo;
     LotSpecs lotspecs;
     Payment payment;
-    boolean status;
+    private String status;
 
     // create a constructor for Customer
     public Customer(String firstName, String lastName, String email, String contactNo, LotSpecs lotspecs, Payment payment) {
@@ -26,6 +26,7 @@ public class Customer {
         this.contactNo = contactNo;
         this.lotspecs = lotspecs;
         this.payment = payment;
+        this.status = status;
     }
     
     public String getFirstName() {
@@ -70,6 +71,14 @@ public class Customer {
 
     public Payment getPayment() {
         return payment;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     
