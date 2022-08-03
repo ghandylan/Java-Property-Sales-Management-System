@@ -17,9 +17,10 @@ public class Customer {
     LotSpecs lotspecs;
     Payment payment;
     private String status;
+    private String daysReserved;
 
     // create a constructor for Customer
-    public Customer(String firstName, String lastName, String email, int contactNo, LotSpecs lotspecs, Payment payment) {
+    public Customer(String firstName, String lastName, String email, int contactNo, LotSpecs lotspecs, Payment payment, String status, String daysReserved) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -27,7 +28,7 @@ public class Customer {
         this.lotspecs = lotspecs;
         this.payment = payment;
         this.status = status;
-        this.status = status;
+        this.daysReserved = daysReserved;
     }
     
     public String getFirstName() {
@@ -80,5 +81,13 @@ public class Customer {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getDaysReserved() {
+        return daysReserved;
+    }
+
+    public void setDaysReserved(String daysReserved) {
+        this.daysReserved = daysReserved;
     }
 }

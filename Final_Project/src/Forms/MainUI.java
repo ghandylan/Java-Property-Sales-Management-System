@@ -39,8 +39,9 @@ public class MainUI extends javax.swing.JFrame {
 
     int dayCount;
     String stat;
+    String daysReserved;
 
-    String header[] = new String[]{"First name", "Surname", "Email", "Contact no.", "Block location", "Lot size (sq. m)", "Price", "MOP", "Status"};
+    String header[] = new String[]{"First name", "Surname", "Email", "Contact no.", "Block location", "Lot size (sq. m)", "Price", "MOP", "Status", "Reserved for"};
     DefaultTableModel dtm;
     int row, col;
     // create a filestream object
@@ -461,7 +462,7 @@ public class MainUI extends javax.swing.JFrame {
         ResDayCount.setText("");
         LotSizeSelection.setText("");
         PriceField.setText("");
-        
+
     }// GEN-LAST:event_ClearFieldsMouseClicked
 
     private void isReservationActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_isReservationActionPerformed
@@ -474,7 +475,6 @@ public class MainUI extends javax.swing.JFrame {
             DurationLabel.setEnabled(false);
             ResDayCount.setEnabled(false);
             DaysLabel.setEnabled(false);
-            PriceField.setText("");
         }
     }// GEN-LAST:event_isReservationActionPerformed
 
@@ -495,10 +495,10 @@ public class MainUI extends javax.swing.JFrame {
     private void PrintButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_PrintButtonMouseClicked
         // save customers arraylist to txt
         try {
-        
+
             PrintWriter writer = new PrintWriter("customers.txt", "UTF-8");
             for (int i = 0; i < customers.size(); i++) {
-                writer.println("Record" + i+1 + customers.get(i).getFirstName() + "\n" + customers.get(i).getLastName() + "\n" + customers.get(i).getEmail() + "\n" + customers.get(i).getContactNo() + "\n" + customers.get(i).getLotspecs().getLocation() + "\n"+customers.get(i).getLotspecs().getLotSize()+"\n"+customers.get(i).getLotspecs().getPrice() + "\n"+ customers.get(i).getPayment().getModeOfPayment() + "n" + customers.get(i).getStatus());
+                writer.println("RECORD " + (i + 1) + "\n" + customers.get(i).getFirstName() + customers.get(i).getLastName() + "\n" + customers.get(i).getEmail() + "\n" + customers.get(i).getContactNo() + "\n" + customers.get(i).getLotspecs().getLocation() + "\n" + customers.get(i).getLotspecs().getLotSize() + "\n" + customers.get(i).getLotspecs().getPrice() + "\n" + customers.get(i).getPayment().getModeOfPayment() + "\n" + customers.get(i).getStatus() + "\n" + customers.get(i).getDaysReserved() + "\n\n");
             }
             writer.close();
 
@@ -561,11 +561,13 @@ public class MainUI extends javax.swing.JFrame {
                 String price = PriceField.getText();
                 String mop = MoPbox.getSelectedItem().toString();
                 if ("Yes".equals(isReservation.getSelectedItem().toString())) {
+                    daysReserved = ResDayCount.getText() + " Days";
                     stat = "RESERVED";
                 } else if ("No".equals(isReservation.getSelectedItem().toString())) {
+                    daysReserved = "ALREADY SOLD";
                     stat = "SOLD";
                 }
-                customers.add(new Customer(firstName, lastName, email, contact, new LotSpecs(locationBlock, sqMet, price), new Payment(mop)));
+                customers.add(new Customer(firstName, lastName, email, contact, new LotSpecs(locationBlock, sqMet, price), new Payment(mop), stat, daysReserved));
                 dtm.setRowCount(0);
 
                 for (int i = 0; i < customers.size(); i++) {
@@ -574,7 +576,7 @@ public class MainUI extends javax.swing.JFrame {
                         customers.get(i).getContactNo(),
                         customers.get(i).getLotspecs().getLocation(), customers.get(i).getLotspecs().getLotSize(),
                         customers.get(i).getLotspecs().getPrice(),
-                        customers.get(i).getPayment().getModeOfPayment()};
+                        customers.get(i).getPayment().getModeOfPayment(), customers.get(i).getStatus(), customers.get(i).getDaysReserved()};
                     dtm.addRow(fields);
                 }
                 clearFields();
@@ -597,6 +599,9 @@ public class MainUI extends javax.swing.JFrame {
         EmailField.setText("");
         ContactField.setText("");
         ResDayCount.setText("");
+        ResDayCount.setText("");
+        LotSizeSelection.setText("");
+        PriceField.setText("");
 
         DurationLabel.setEnabled(false);
         ResDayCount.setEnabled(false);
