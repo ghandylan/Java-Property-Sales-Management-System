@@ -16,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
+import java.io.PrintWriter;
 
 /**
  *
@@ -37,14 +38,13 @@ public class MainUI extends javax.swing.JFrame {
     String reservationDayCount;
 
     int dayCount;
+    String stat;
 
-    String header[] = new String[] { "First name", "Surname", "Email", "Contact no.", "Block location", "Lot size (sq. m)", "Price",
-            "MOP" };
+    String header[] = new String[]{"First name", "Surname", "Email", "Contact no.", "Block location", "Lot size (sq. m)", "Price", "MOP", "Status"};
     DefaultTableModel dtm;
     int row, col;
     // create a filestream object
     FileOutputStream fos;
-
 
     // initialize an arraylist for lot
     // create a function that randomly chooses 0 or 1
@@ -153,7 +153,7 @@ public class MainUI extends javax.swing.JFrame {
 
         RegisterButton.setBackground(new java.awt.Color(51, 153, 255));
         RegisterButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        RegisterButton.setForeground(new java.awt.Color(0, 0, 0));
+        RegisterButton.setForeground(new java.awt.Color(255, 255, 255));
         RegisterButton.setText("Register");
         RegisterButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         RegisterButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -190,7 +190,7 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
 
-        ClearFields.setBackground(new java.awt.Color(255, 102, 102));
+        ClearFields.setBackground(new java.awt.Color(255, 0, 0));
         ClearFields.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ClearFields.setForeground(new java.awt.Color(255, 255, 255));
         ClearFields.setText("Clear");
@@ -220,7 +220,7 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel6.setText("REAL-ESTATE SALES & MANAGEMENT SYSTEM");
 
         PropRecords.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -245,9 +245,9 @@ public class MainUI extends javax.swing.JFrame {
 
         jLabel15.setText("+63");
 
-        PrintButton.setBackground(new java.awt.Color(51, 255, 102));
+        PrintButton.setBackground(new java.awt.Color(0, 153, 0));
         PrintButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        PrintButton.setForeground(new java.awt.Color(0, 0, 0));
+        PrintButton.setForeground(new java.awt.Color(255, 255, 255));
         PrintButton.setText("Print");
         PrintButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         PrintButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -261,9 +261,9 @@ public class MainUI extends javax.swing.JFrame {
             }
         });
 
-        ExitButton.setBackground(new java.awt.Color(153, 153, 153));
+        ExitButton.setBackground(new java.awt.Color(102, 102, 102));
         ExitButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        ExitButton.setForeground(new java.awt.Color(0, 0, 0));
+        ExitButton.setForeground(new java.awt.Color(255, 255, 255));
         ExitButton.setText("Exit");
         ExitButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         ExitButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -292,110 +292,99 @@ public class MainUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(269, 269, 269)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addGap(256, 256, 256))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(FirstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(196, 196, 196))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(EmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel15)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ContactField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(LastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(95, 95, 95)
-                                .addComponent(jLabel6)))
-                        .addContainerGap(189, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(EmailField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(88, 88, 88)
+                                        .addComponent(jLabel15)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(ContactField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(FirstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(111, 111, 111)
+                                        .addComponent(LastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(164, 164, 164)
+                                .addComponent(jLabel10)
+                                .addGap(250, 250, 250)
+                                .addComponent(jLabel11))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(273, 273, 273)
+                                .addComponent(jLabel9))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(65, 65, 65)
+                                        .addComponent(jLabel2)))
+                                .addGap(112, 112, 112))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(125, 125, 125)
-                                .addComponent(jLabel10))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(272, 272, 272)
-                                .addComponent(jLabel9)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel11)
-                        .addGap(270, 270, 270))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(387, 387, 387))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(236, 236, 236)
-                            .addComponent(jLabel3))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(isReservation, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(259, 259, 259)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LocationSelection, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8)))))
+                                    .addComponent(isReservation, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(LocationSelection, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(25, 25, 25)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(86, 86, 86)
+                                                .addComponent(jLabel5))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(101, 101, 101)
+                                                .addComponent(LotSizeSelection, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(109, 109, 109)
+                                                .addComponent(MoPbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(126, 126, 126)))
+                        .addComponent(jLabel7))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(224, 224, 224)
                         .addComponent(ClearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(RegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(PrintButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(128, 128, 128)
-                                .addComponent(LotSizeSelection, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(107, 107, 107)
-                                .addComponent(PriceField, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(36, 36, 36)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(RegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(26, 26, 26)
-                                                .addComponent(PrintButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addGap(51, 51, 51))))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(MoPbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(69, 69, 69)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(48, 48, 48)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(DurationLabel)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(ResDayCount, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(DaysLabel))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(36, 36, 36)
-                                        .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(415, 415, 415)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel7)))
-                .addContainerGap(216, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(ResDayCount, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DaysLabel))
+                            .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DurationLabel)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PriceField, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(186, 186, 186)))
+                .addContainerGap(95, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addGap(265, 265, 265)
+                .addComponent(jLabel13)
+                .addGap(336, 336, 336))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(395, 395, 395)
+                .addComponent(jLabel4)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,23 +392,21 @@ public class MainUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addComponent(jLabel6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(LastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel9)
-                                .addGap(2, 2, 2)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(FirstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(FirstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -427,9 +414,9 @@ public class MainUI extends javax.swing.JFrame {
                     .addComponent(EmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ContactField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15))
-                .addGap(30, 30, 30)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
@@ -437,30 +424,29 @@ public class MainUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LotSizeSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PriceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LocationSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LocationSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PriceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(DurationLabel)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel5)
+                    .addComponent(DurationLabel))
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(isReservation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(MoPbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ResDayCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DaysLabel)
-                    .addComponent(MoPbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(102, 102, 102)
+                    .addComponent(DaysLabel))
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ClearFields, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PrintButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -475,6 +461,7 @@ public class MainUI extends javax.swing.JFrame {
         ResDayCount.setText("");
         LotSizeSelection.setText("");
         PriceField.setText("");
+        
     }// GEN-LAST:event_ClearFieldsMouseClicked
 
     private void isReservationActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_isReservationActionPerformed
@@ -487,6 +474,7 @@ public class MainUI extends javax.swing.JFrame {
             DurationLabel.setEnabled(false);
             ResDayCount.setEnabled(false);
             DaysLabel.setEnabled(false);
+            PriceField.setText("");
         }
     }// GEN-LAST:event_isReservationActionPerformed
 
@@ -499,39 +487,26 @@ public class MainUI extends javax.swing.JFrame {
     }// GEN-LAST:event_LocationSelectionMouseClicked
 
     private void PropRecordsMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_PropRecordsMouseClicked
-        // row = PropRecords.getSelectedRow();
-        // col = PropRecords.getColumnCount();
-        // System.out.println(row + "," + col);
-        // jTextFoodName.setText(dtm.getValueAt(row, 0).toString());
-        // jTextFoodPrice.setText(dtm.getValueAt(row, 1).toString());
-        // String location = dtm.getValueAt(row, 2).toString();
-        // for (int i = 0; i < (jCBFoodLocation.getItemCount()); i++) {
-        // if (jCBFoodLocation.getItemAt(i).equalsIgnoreCase(location)) {
-        // jCBFoodLocation.setSelectedIndex(i);
-        // }
-        // }
     }// GEN-LAST:event_PropRecordsMouseClicked
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_RegisterButtonActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_RegisterButtonActionPerformed
 
     private void PrintButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_PrintButtonMouseClicked
         // save customers arraylist to txt
         try {
-            FileWriter fw = new FileWriter("Customers.txt");
-            BufferedWriter bw = new BufferedWriter(fw);
+        
+            PrintWriter writer = new PrintWriter("customers.txt", "UTF-8");
             for (int i = 0; i < customers.size(); i++) {
-                bw.write(customers.get(i).toString());
-                bw.newLine();
+                writer.println("Record" + i+1 + customers.get(i).getFirstName() + "\n" + customers.get(i).getLastName() + "\n" + customers.get(i).getEmail() + "\n" + customers.get(i).getContactNo() + "\n" + customers.get(i).getLotspecs().getLocation() + "\n"+customers.get(i).getLotspecs().getLotSize()+"\n"+customers.get(i).getLotspecs().getPrice() + "\n"+ customers.get(i).getPayment().getModeOfPayment() + "n" + customers.get(i).getStatus());
             }
-            bw.close();
-            fw.close();
+            writer.close();
+
+            JOptionPane.showMessageDialog(null, "Records have been saved to txt file!");
         } catch (IOException e) {
+
         }
 
-        
-        
     }// GEN-LAST:event_PrintButtonMouseClicked
 
     private void PrintButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_PrintButtonActionPerformed
@@ -547,17 +522,13 @@ public class MainUI extends javax.swing.JFrame {
     }// GEN-LAST:event_ExitButtonMouseClicked
 
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ExitButtonActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_ExitButtonActionPerformed
 
     private void MoPboxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jComboBox1ActionPerformed
 
     }// GEN-LAST:event_jComboBox1ActionPerformed
 
-   
-
     private void ContactFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ContactFieldActionPerformed
-        // TODO add your handling code here:
     }// GEN-LAST:event_ContactFieldActionPerformed
 
     private void YesReservationChoiceMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_YesReservationChoiceMouseClicked
@@ -577,36 +548,39 @@ public class MainUI extends javax.swing.JFrame {
 
     private void RegisterButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_RegisterButtonMouseClicked
         if (FirstNameField.getText().isEmpty() || LastNameField.getText().isEmpty() || EmailField.getText().isEmpty()
-                || ContactField.getText().isEmpty()) {
+                || ContactField.getText().isEmpty() || LotSizeSelection.getText().isEmpty() || PriceField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter the missing data!");
         } else {
-            // store multiple Customers in a list
-            // get customer info
-
             try {
+                String firstName = FirstNameField.getText();
+                String lastName = LastNameField.getText();
+                String email = EmailField.getText();
                 int contact = Integer.parseInt(ContactField.getText());
+                String locationBlock = LocationSelection.getSelectedItem().toString();
                 String sqMet = LotSizeSelection.getText();
-
-                customers.add(new Customer(FirstNameField.getText(), LastNameField.getText(), EmailField.getText(),
-                        contact,
-                        new LotSpecs(LocationSelection.getSelectedItem().toString(), sqMet, PriceField.getText()),
-                        new Payment(MoPbox.getSelectedItem().toString())));
-                 dtm.setRowCount(0);
+                String price = PriceField.getText();
+                String mop = MoPbox.getSelectedItem().toString();
+                if ("Yes".equals(isReservation.getSelectedItem().toString())) {
+                    stat = "RESERVED";
+                } else if ("No".equals(isReservation.getSelectedItem().toString())) {
+                    stat = "SOLD";
+                }
+                customers.add(new Customer(firstName, lastName, email, contact, new LotSpecs(locationBlock, sqMet, price), new Payment(mop)));
+                dtm.setRowCount(0);
 
                 for (int i = 0; i < customers.size(); i++) {
-                    Object[] fields = { customers.get(i).getFirstName(),
-                            customers.get(i).getLastName(), customers.get(i).getEmail(),
-                            customers.get(i).getContactNo(),
-                            customers.get(i).getLotspecs().getLocation(), customers.get(i).getLotspecs().getLotSize(),
-                            customers.get(i).getLotspecs().getPrice(),
-                            customers.get(i).getPayment().getModeOfPayment() };
+                    Object[] fields = {customers.get(i).getFirstName(),
+                        customers.get(i).getLastName(), customers.get(i).getEmail(),
+                        customers.get(i).getContactNo(),
+                        customers.get(i).getLotspecs().getLocation(), customers.get(i).getLotspecs().getLotSize(),
+                        customers.get(i).getLotspecs().getPrice(),
+                        customers.get(i).getPayment().getModeOfPayment()};
                     dtm.addRow(fields);
                 }
                 clearFields();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Double check your values for contact number, lot size, and price");
             }
-
         }
     }// GEN-LAST:event_RegisterButtonMouseClicked
 

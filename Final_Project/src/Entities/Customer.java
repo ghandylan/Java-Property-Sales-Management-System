@@ -27,6 +27,7 @@ public class Customer {
         this.lotspecs = lotspecs;
         this.payment = payment;
         this.status = status;
+        this.status = status;
     }
     
     public String getFirstName() {
@@ -80,8 +81,4 @@ public class Customer {
     public void setStatus(String status) {
         this.status = status;
     }
-
-    
-
-
 }
