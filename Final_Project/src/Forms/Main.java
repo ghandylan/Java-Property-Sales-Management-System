@@ -16,6 +16,7 @@ import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Entities.LotInterface;
+import java.math.BigInteger;
 
 /**
  *
@@ -690,7 +691,7 @@ public final class Main extends javax.swing.JFrame {
                 String firstName = FirstNameField.getText();
                 String lastName = LastNameField.getText();
                 String email = EmailField.getText();
-                int contact = Integer.parseInt(ContactField.getText());
+                BigInteger contact = new BigInteger(ContactField.getText());
                 String locationBlock = LocationSelection.getSelectedItem().toString();
                 String sqMet = LotSizeSelection.getText();
                 String price = PriceField.getText();

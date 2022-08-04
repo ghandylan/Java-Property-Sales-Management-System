@@ -4,6 +4,8 @@
  */
 package Entities;
 
+import java.math.BigInteger;
+
 /**
  *
  * @author Smurf
@@ -13,14 +15,14 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String email;
-    private int contactNo;
+    private BigInteger contactNo;
     private LotSpecs lotspecs;
     private final Payment payment;
     private String status;
     private String daysReserved;
 
     // create a constructor for Customer
-    public Customer(String firstName, String lastName, String email, int contactNo, LotSpecs lotspecs, Payment payment, String status, String daysReserved) {
+    public Customer(String firstName, String lastName, String email, BigInteger contactNo, LotSpecs lotspecs, Payment payment, String status, String daysReserved) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -55,11 +57,11 @@ public class Customer {
         this.email = email;
     }
 
-    public int getContactNo() {
+    public BigInteger getContactNo() {
         return contactNo;
     }
 
-    public void setContactNo(int contactNo) {
+    public void setContactNo(BigInteger contactNo) {
         this.contactNo = contactNo;
     }
 
