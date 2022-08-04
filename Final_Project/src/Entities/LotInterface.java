@@ -18,7 +18,7 @@ public interface LotInterface {
     public static ArrayList<Lots> al_units() throws IOException {
         Lots lot;
         ArrayList<Lots> lotList = new ArrayList<>();
-        String location = "src/Data/units.csv";
+        String location = "src/Data/lots.csv";
         String level = "";
         BufferedReader scan = null;
         try {

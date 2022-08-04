@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Programming/codes/public/CS129/Final_Project/src/Entities/Customer.java</file>
             <file>file:/C:/Programming/codes/public/CS129/Final_Project/src/Forms/Main.java</file>
+            <file>file:/C:/Programming/codes/public/CS129/Final_Project/src/Entities/LotLocation.java</file>
+            <file>file:/C:/Programming/codes/public/CS129/Final_Project/src/Entities/Customer.java</file>
             <file>file:/C:/Programming/codes/public/CS129/Final_Project/src/Entities/LotInterface.java</file>
-            <file>file:/C:/Programming/codes/public/CS129/Final_Project/src/Entities/Receipt.java</file>
-            <file>file:/C:/Programming/codes/public/CS129/Final_Project/src/Data/units.csv</file>
         </group>
     </open-files>
 </project-private>
