@@ -14,7 +14,6 @@ public class Payment {
     private boolean reservation;
     private int totalPrice;
 
-    // create a constructor for Payment
     public Payment(String modeOfPayment) {
         this.modeOfPayment = modeOfPayment;
 

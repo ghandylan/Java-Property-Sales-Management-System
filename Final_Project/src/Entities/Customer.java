@@ -4,18 +4,18 @@
  */
 package Entities;
 
-
 /**
  *
  * @author Smurf
  */
 public class Customer {
+
     private String firstName;
     private String lastName;
     private String email;
     private int contactNo;
-    LotSpecs lotspecs;
-    Payment payment;
+    private LotSpecs lotspecs;
+    private final Payment payment;
     private String status;
     private String daysReserved;
 
@@ -30,7 +30,7 @@ public class Customer {
         this.status = status;
         this.daysReserved = daysReserved;
     }
-    
+
     public String getFirstName() {
         return firstName;
     }

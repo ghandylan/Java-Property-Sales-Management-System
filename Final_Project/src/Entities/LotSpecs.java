@@ -44,5 +44,4 @@ public class LotSpecs {
     public void setPrice(String price) {
         this.price = price;
     }
-
 }

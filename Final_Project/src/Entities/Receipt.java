@@ -9,8 +9,14 @@ package Entities;
  * @author Smurf
  */
 public class Receipt {
+
     private Customer userInformation;
     private LotSpecs specs;
+
+    public Receipt(Customer userInformation, LotSpecs specs) {
+        this.userInformation = userInformation;
+        this.specs = specs;
+    }
 
     public Customer getUserInformation() {
         return userInformation;
