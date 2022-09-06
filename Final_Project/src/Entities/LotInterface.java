@@ -28,8 +28,9 @@ public interface LotInterface {
                 lot = new Lots(row[0], row[1], Double.parseDouble(row[2]), new Specifics(new LotLocation(Integer.parseInt(row[3]), Integer.parseInt(row[4])), Integer.parseInt(row[5])));
                 lotList.add(lot);
             }
-        } catch (IOException | NumberFormatException EOL) {
+        } catch (IOException | NumberFormatException ignored) {
         }
+        assert scan != null;
         scan.close();
         return lotList;
     }

@@ -6,7 +6,7 @@ package Entities;
 
 /**
  *
- * @author Josh Gomez
+ * @author
  */
 public class Specifics {
     private LotLocation address;

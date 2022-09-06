@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Entities.LotInterface;
@@ -38,14 +39,14 @@ public final class Main extends javax.swing.JFrame {
     String stat;
     String daysReserved;
 
-    String header[] = new String[]{"First name", "Surname", "Email", "Contact #", "Block #", "Lot size", "Price", "MOP", "Status", "Reserved for"};
+    String[] header = new String[]{"First name", "Surname", "Email", "Contact #", "Block #", "Lot size", "Price", "MOP", "Status", "Reserved for"};
     DefaultTableModel dtm;
     int row, col;
 
     // create a filestream object
     FileOutputStream fos;
 
-    String headerLots[] = new String[]{"Block #", "Price", "Lot ID", "Status", "Size"};
+    String[] headerLots = new String[]{"Block #", "Price", "Lot ID", "Status", "Size"};
     DefaultTableModel availableLots;
 
     int unitsOwned = 15;
@@ -53,8 +54,7 @@ public final class Main extends javax.swing.JFrame {
 
     // create a function that randomly chooses 0 or 1
     public int random() {
-        int random = (int) (Math.random() * 2);
-        return random;
+        return (int) (Math.random() * 2);
     }
 
     public Main() throws IOException {
@@ -607,7 +607,7 @@ public final class Main extends javax.swing.JFrame {
     }// GEN-LAST:event_ClearFieldsMouseClicked
 
     private void isReservationActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_isReservationActionPerformed
-        String reservChoice = isReservation.getSelectedItem().toString();
+        String reservChoice = Objects.requireNonNull(isReservation.getSelectedItem()).toString();
         if ("Yes".equals(reservChoice)) {
             DurationLabel.setEnabled(true);
             ResDayCount.setEnabled(true);
@@ -620,7 +620,7 @@ public final class Main extends javax.swing.JFrame {
     }// GEN-LAST:event_isReservationActionPerformed
 
     private void LocationSelectionActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_LocationSelectionActionPerformed
-        selectedCity = LocationSelection.getSelectedItem().toString();
+        selectedCity = Objects.requireNonNull(LocationSelection.getSelectedItem()).toString();
     }// GEN-LAST:event_LocationSelectionActionPerformed
 
     private void LocationSelectionMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_LocationSelectionMouseClicked
@@ -731,7 +731,6 @@ public final class Main extends javax.swing.JFrame {
     }// GEN-LAST:event_ResDayCountActionPerformed
 
     /**
-     * @param args the command line arguments
      */
     void clearFields() {
         FirstNameField.setText("");
