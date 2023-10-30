@@ -11,6 +11,7 @@ Perez, Paul James \
 Tayag, Dylan Louis\
 Tomagos, Gabriel 
 
+***Each contributor played a crucial role in the development of the system, bringing their unique skills and expertise to the project.***
 
 ## Professor:
 Gloren Fuentes
